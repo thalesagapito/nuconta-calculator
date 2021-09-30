@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { formatAmountInCents } from '../composables/formatters'
 
 const props = withDefaults(defineProps<{
   grossAmountInCents: number
   amountInCents: number
   months: number
 }>(), {
-  grossAmountInCents: 100000,
-  amountInCents: 100000,
+  grossAmountInCents: 0,
+  amountInCents: 0,
   months: 12,
 })
 
-const count = ref(0)
+const formattedGrossAmountInCents = computed(() => formatAmountInCents(props.grossAmountInCents))
+const formattedAmountInCents = computed(() => formatAmountInCents(props.amountInCents))
 </script>
 
 <template>
@@ -26,10 +28,10 @@ const count = ref(0)
       after 12 months you would have
     </div>
     <div class="amount">
-      R$ 1.049,27
+      {{ formattedAmountInCents }}
     </div>
     <div class="gross-amount">
-      (gross amount R$ 1011,23)
+      (gross amount {{ formattedGrossAmountInCents }})
     </div>
 
     <p class="disclaimer">
