@@ -12,6 +12,6 @@ import NucontaCalculatorOutput from './components/nuconta-calculator-output.vue'
 
 <style>
 .nuconta-calculator-wrapper {
-  @apply flex flex-col sm:flex-row p-6 space-y-6;
+  @apply flex flex-col sm:flex-row p-7;
 }
 </style>

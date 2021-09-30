@@ -15,31 +15,48 @@ const count = ref(0)
 </script>
 
 <template>
-  <p>
-    {{ amountInCents }}
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
+  <div class="output-wrapper">
+    <img
+      src="../assets/relaxing.png"
+      class="relaxing-illustration"
+      alt="Illustration of person laying back and relaxing."
+    >
 
-  <p>See <code>README.md</code> for more information.</p>
+    <div class="after-n-months">
+      after 12 months you would have
+    </div>
+    <div class="amount">
+      R$ 1.049,27
+    </div>
+    <div class="gross-amount">
+      (gross amount R$ 1011,23)
+    </div>
 
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">
-    count is: {{ count }}
-  </button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+    <p class="disclaimer">
+      This estimate does not constitute a guarantee of future earnings. It is only an estimate based on today's Interbank Deposite rate for the entire period that your deposit would remain in your Nuconta account, and considering no withdrawals.
+    </p>
+  </div>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
+.output-wrapper {
+  @apply bg-white shadow px-9 pb-8 mt-16 flex flex-col justify-start;
+
+  .relaxing-illustration {
+    @apply w-auto h-32 -mt-16 mb-8 self-center;
+  }
+
+  .after-n-months,
+  .gross-amount {
+    @apply text-gray-300 text-sm;
+  }
+
+  .amount {
+    @apply text-5xl text-brand-purple mt-3 mb-4;
+  }
+
+  .disclaimer {
+    @apply text-gray-300 text-sm mt-8;
+  }
+}
 </style>
