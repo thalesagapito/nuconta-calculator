@@ -42,10 +42,12 @@ const formattedAmountInCents = computed(() => formatAmountInCents(props.amountIn
 
 <style lang="postcss" scoped>
 .output-wrapper {
-  @apply bg-white shadow px-9 pb-8 mt-16 flex flex-col justify-start;
+  @apply bg-white shadow px-8 pb-8 mt-14 flex flex-col justify-start;
 
   .relaxing-illustration {
-    @apply w-auto h-32 -mt-16 mb-8 self-center;
+    @apply w-auto mb-9 self-center;
+    margin-top: -3.75rem;
+    height: 7.5rem;
   }
 
   .after-n-months,
@@ -54,11 +56,11 @@ const formattedAmountInCents = computed(() => formatAmountInCents(props.amountIn
   }
 
   .amount {
-    @apply text-5xl text-brand-purple mt-3 mb-4;
+    @apply text-5xl text-brand-purple mt-2.5 mb-3.5;
   }
 
   .disclaimer {
-    @apply text-gray-300 text-sm mt-8;
+    @apply text-gray-300 text-sm leading-normal mt-8;
   }
 }
 </style>

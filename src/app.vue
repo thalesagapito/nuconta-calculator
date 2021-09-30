@@ -10,8 +10,8 @@ import NucontaCalculatorOutput from './components/nuconta-calculator-output.vue'
   </div>
 </template>
 
-<style>
+<style lang="postcss">
 .nuconta-calculator-wrapper {
-  @apply flex flex-col sm:flex-row p-7;
+  @apply flex flex-col sm:flex-row p-8;
 }
 </style>
