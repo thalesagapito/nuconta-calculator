@@ -14,6 +14,7 @@ module.exports = {
         100: '#9d5bc7',
         200: '#7e25b7',
       },
+      // TODO figure out if this is the only color used but with different opacities
       'brand-purple': '#7e25b7',
     },
     fontFamily: {
