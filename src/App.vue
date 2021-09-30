@@ -14,6 +14,6 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <style>
 .outer .inner {
-  @apply bg-brand-purple;
+  @apply bg-purple-200;
 }
 </style>
