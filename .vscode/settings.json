@@ -2,5 +2,5 @@
     "volar.tsPlugin": false,
     "volar.takeOverBuiltinTsExtension": false,
     "typescript.tsdk": "node_modules/typescript/lib",
-    "i18n-ally.localesPaths": ["src/locales"]
+    "i18n-ally.localesPaths": ["locales"]
 }
