@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 
-withDefaults(defineProps<{
-  grossAmount: number
-  amount: number
-  months: number
-}>(), {
-  grossAmount: 0,
-  amount: 0,
-  months: 12,
-})
+withDefaults(
+  defineProps<{
+    grossAmount: number
+    amount: number
+    months: number
+  }>(),
+  {
+    grossAmount: 0,
+    amount: 0,
+    months: 1,
+  },
+)
 
 const { t } = useI18n()
 </script>

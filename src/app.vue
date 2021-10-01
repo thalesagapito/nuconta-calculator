@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import NucontaCalculatorInput from './components/nuconta-calculator-input.vue'
-import NucontaCalculatorOutput from './components/nuconta-calculator-output.vue'
+import CalculatorInput from './components/calculator-input.vue'
+import CalculatorOutput from './components/calculator-output.vue'
 </script>
 
 <template>
-  <div class="nuconta-calculator-wrapper">
-    <nuconta-calculator-input />
-    <nuconta-calculator-output />
+  <div class="calculator-wrapper">
+    <calculator-input />
+    <calculator-output />
   </div>
 </template>
 
-<style lang="postcss">
-.nuconta-calculator-wrapper {
+<style lang="postcss" scoped>
+.calculator-wrapper {
   @apply flex flex-col sm:flex-row p-8;
 }
 </style>
