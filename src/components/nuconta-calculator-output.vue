@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { formatAmountInCents } from '../composables/formatters'
+import { useI18n } from 'vue-i18n'
 
-const props = withDefaults(defineProps<{
-  grossAmountInCents: number
-  amountInCents: number
+withDefaults(defineProps<{
+  grossAmount: number
+  amount: number
   months: number
 }>(), {
-  grossAmountInCents: 0,
-  amountInCents: 0,
+  grossAmount: 0,
+  amount: 0,
   months: 12,
 })
 
-const formattedGrossAmountInCents = computed(() => formatAmountInCents(props.grossAmountInCents))
-const formattedAmountInCents = computed(() => formatAmountInCents(props.amountInCents))
+const { t } = useI18n()
 </script>
 
 <template>
@@ -25,17 +23,19 @@ const formattedAmountInCents = computed(() => formatAmountInCents(props.amountIn
     >
 
     <div class="after-n-months">
-      after 12 months you would have
+      {{ t('afterNMonths', { n: months }) }}
     </div>
+
     <div class="amount">
-      {{ formattedAmountInCents }}
+      {{ amount }}
     </div>
+
     <div class="gross-amount">
-      (gross amount {{ formattedGrossAmountInCents }})
+      {{ t('grossAmount', { formattedAmount: grossAmount }) }}
     </div>
 
     <p class="disclaimer">
-      This estimate does not constitute a guarantee of future earnings. It is only an estimate based on today's Interbank Deposite rate for the entire period that your deposit would remain in your Nuconta account, and considering no withdrawals.
+      {{ t('disclaimer') }}
     </p>
   </div>
 </template>
@@ -56,7 +56,7 @@ const formattedAmountInCents = computed(() => formatAmountInCents(props.amountIn
   }
 
   .amount {
-    @apply text-5xl text-brand-purple mt-2.5 mb-3.5;
+    @apply text-5xl text-brand-purple mt-2.5 mb-4;
   }
 
   .disclaimer {

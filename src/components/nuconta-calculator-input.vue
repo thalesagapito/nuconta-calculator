@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 
 const props = withDefaults(defineProps<{
-  firstDepositAmountInCents: number
+  firstDepositAmount: number
   months: number
 }>(), {
-  firstDepositAmountInCents: 100000,
+  firstDepositAmount: 100000,
   months: 12,
 })
 
@@ -14,7 +14,7 @@ const count = ref(0)
 
 <template>
   <p>
-    {{ firstDepositAmountInCents }}
+    {{ firstDepositAmount }}
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
     +
     <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
