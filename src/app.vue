@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import CalculatorInput from './components/calculator-input.vue'
 import CalculatorOutput from './components/calculator-output.vue'
 </script>

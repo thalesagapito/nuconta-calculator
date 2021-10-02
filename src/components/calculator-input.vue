@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { ref } from 'vue'
 import MonthSlider from './calculator-input-month-slider.vue'
 import FirstDepositInput from './calculator-input-first-deposit-input.vue'
