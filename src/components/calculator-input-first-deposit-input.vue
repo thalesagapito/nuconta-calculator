@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { computed, ref } from 'vue'
 import { useCurrencyFormatter } from '../composables/formatters'
 
 const INCREMENT_OR_DECREMENT_VALUE = 100
@@ -21,8 +21,9 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const { formatCurrency } = useCurrencyFormatter()
 
-const formattedFirstDepositAmount = computed(() => formatCurrency({ amount: props.firstDepositAmount }))
+const firstDepositAmountInput = ref<HTMLInputElement>()
 const isDecrementDisabled = computed(() => props.firstDepositAmount === 0)
+const formattedFirstDepositAmount = computed(() => formatCurrency({ amount: props.firstDepositAmount }))
 
 function decrementFirstDepositAmount() {
   const newAmount = Math.max(0, props.firstDepositAmount - INCREMENT_OR_DECREMENT_VALUE)
@@ -34,6 +35,24 @@ function incrementFirstDepositAmount() {
   emit('update:firstDepositAmount', newAmount)
 }
 
+function getAmountFromCurrencyString(currencyString: string) {
+  const stringAmountWithDigitsOnly = currencyString.replace(/\D/g, '') || '0'
+  return Number.parseInt(stringAmountWithDigitsOnly) / 100
+}
+
+function updateInputWithFormattedValue() {
+  if (firstDepositAmountInput.value)
+    firstDepositAmountInput.value.value = formattedFirstDepositAmount.value
+}
+
+const writableFirstDepositAmount = computed({
+  get: () => formattedFirstDepositAmount.value,
+  set: (value) => {
+    const amount = getAmountFromCurrencyString(value)
+    emit('update:firstDepositAmount', amount)
+    updateInputWithFormattedValue()
+  },
+})
 </script>
 
 <template>
@@ -43,9 +62,12 @@ function incrementFirstDepositAmount() {
     </div>
 
     <div class="amount-wrapper">
-      <div class="first-deposit-amount">
-        {{ formattedFirstDepositAmount }}
-      </div>
+      <input
+        ref="firstDepositAmountInput"
+        v-model="writableFirstDepositAmount"
+        class="first-deposit-amount"
+        type="text"
+      />
 
       <button
         class="button"
@@ -56,7 +78,11 @@ function incrementFirstDepositAmount() {
         <span class="line" aria-hidden="true" />
       </button>
 
-      <button class="button" :aria-label="t('increment')" @click="incrementFirstDepositAmount">
+      <button
+        class="button"
+        :aria-label="t('increment')"
+        @click="incrementFirstDepositAmount"
+      >
         <span class="line" aria-hidden="true" />
         <span class="line transform rotate-90" aria-hidden="true" />
       </button>
@@ -76,7 +102,7 @@ function incrementFirstDepositAmount() {
     @apply flex justify-between items-center pt-2;
 
     .first-deposit-amount {
-      @apply text-lg mr-auto;
+      @apply text-lg mr-auto bg-gray-100 py-2 rounded;
     }
 
     .button {

@@ -27,7 +27,7 @@ export function useCurrencyFormatter() {
   const addSpaceAfterSymbol = (value: string) => value.replace(/^(\D+)/, '$1 ')
 
   const formatCurrency = (args: FormatCurrencyArgs) => {
-    const { amount, useGrouping = false, useSpaceAfterSymbol = true } = args
+    const { amount, useGrouping = true, useSpaceAfterSymbol = true } = args
     const format = useGrouping ? 'currency' : 'currencyWithoutGrouping'
     const formattedAmount = n(amount, format)
 
