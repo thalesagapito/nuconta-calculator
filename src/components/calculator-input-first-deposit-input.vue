@@ -22,14 +22,18 @@ const { t } = useI18n()
 const { formatCurrency } = useCurrencyFormatter()
 
 const formattedFirstDepositAmount = computed(() => formatCurrency({ amount: props.firstDepositAmount }))
-
-function incrementFirstDepositAmount() {
-  emit('update:firstDepositAmount', props.firstDepositAmount + INCREMENT_OR_DECREMENT_VALUE)
-}
+const isDecrementDisabled = computed(() => props.firstDepositAmount === 0)
 
 function decrementFirstDepositAmount() {
-  emit('update:firstDepositAmount', props.firstDepositAmount - INCREMENT_OR_DECREMENT_VALUE)
+  const newAmount = Math.max(0, props.firstDepositAmount - INCREMENT_OR_DECREMENT_VALUE)
+  emit('update:firstDepositAmount', newAmount)
 }
+
+function incrementFirstDepositAmount() {
+  const newAmount = props.firstDepositAmount + INCREMENT_OR_DECREMENT_VALUE
+  emit('update:firstDepositAmount', newAmount)
+}
+
 </script>
 
 <template>
@@ -43,7 +47,12 @@ function decrementFirstDepositAmount() {
         {{ formattedFirstDepositAmount }}
       </div>
 
-      <button class="button" :aria-label="t('decrement')" @click="decrementFirstDepositAmount">
+      <button
+        class="button"
+        :aria-label="t('decrement')"
+        :disabled="isDecrementDisabled"
+        @click="decrementFirstDepositAmount"
+      >
         <span class="line" aria-hidden="true" />
       </button>
 
@@ -57,7 +66,7 @@ function decrementFirstDepositAmount() {
 
 <style lang="postcss" scoped>
 .first-deposit-input-wrapper {
-  @apply flex flex-col;
+  @apply flex flex-col flex-shrink-0;
 
   .first-deposit {
     @apply text-lg text-gray-300;
@@ -74,12 +83,21 @@ function decrementFirstDepositAmount() {
       @apply w-14 h-14 ml-4 flex justify-center items-center relative border border-brand-purple rounded-full transition;
 
       .line {
-        @apply w-5 h-px absolute bg-brand-purple;
+        @apply w-5 h-px absolute bg-brand-purple transition;
       }
 
-      &:hover, &:focus {
+      &:disabled {
+        @apply border-gray-200 cursor-not-allowed;
+        .line {
+          @apply bg-gray-200;
+        }
+      }
+
+      &:not(:disabled):hover,
+      &:not(:disabled):focus {
         @apply bg-brand-purple bg-opacity-10;
       }
+
       &:active {
         @apply bg-brand-purple bg-opacity-30;
       }
