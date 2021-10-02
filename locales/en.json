@@ -1,5 +1,7 @@
 {
   "firstDeposit": "First deposit",
+  "increment": "Increment",
+  "decrement": "Decrement",
   "for": "For",
   "nMonths": "a month | {n} months",
   "afterNMonths": "after a month you would have | after {n} months you would have",
