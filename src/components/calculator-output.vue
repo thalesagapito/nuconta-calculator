@@ -63,7 +63,7 @@ const { t } = useI18n()
   }
 
   .disclaimer {
-    @apply text-gray-300 text-sm leading-normal mt-8;
+    @apply text-gray-300 text-sm leading-normal my-8;
   }
 }
 </style>
