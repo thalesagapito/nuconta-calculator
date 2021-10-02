@@ -70,22 +70,18 @@ const sliderPercentage = computed(() => `${Math.floor(props.months / MAX_MONTHS 
       @apply outline-none ring ring-offset-8 ring-offset-gray-100;
     }
 
-    &:active {
-      @apply ring-0;
-    }
-
-    &::range-lower {
-      @apply bg-brand-purple;
-    }
-
     &::range-thumb {
-      @apply block appearance-none bg-brand-purple w-4 h-4 border-none rounded-full transition-all duration-150;
+      @apply appearance-none bg-brand-purple w-4 h-4 border-none rounded-full transition-all duration-150;
       cursor: grab;
     }
 
-    &:active::range-thumb {
-      @apply w-6 h-6 ring ring-offset-0;
-      cursor: grabbing;
+    &:active {
+      @apply ring-0;
+
+      &::range-thumb {
+        @apply w-6 h-6 ring ring-offset-0;
+        cursor: grabbing;
+      }
     }
   }
 }
