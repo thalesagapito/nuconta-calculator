@@ -1,7 +1,7 @@
 import { CalculateNuContaReturnsArgs } from './types'
 import { BigJs, DECIMAL_PLACES_FOR_RESULT } from './constants'
 
-type CalculateCompoundInterestArgs = CalculateNuContaReturnsArgs
+export type CalculateCompoundInterestArgs = CalculateNuContaReturnsArgs
 
 export function calculateCompoundInterest(args: CalculateCompoundInterestArgs) {
   const { period, interest, 'initial-amount': initialAmount } = args

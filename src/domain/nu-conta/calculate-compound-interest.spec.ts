@@ -1,8 +1,11 @@
-import { calculateCompoundInterest } from './calculate-compound-interest'
+import { calculateCompoundInterest, CalculateCompoundInterestArgs } from './calculate-compound-interest'
+
+type Input = CalculateCompoundInterestArgs
+type InputWithExpectedResult = Input & { expectedResult: number }
 
 describe('calculate-compound-interest', () => {
-  const validInput = { 'initial-amount': 1000, 'interest': 0.5, 'period': 60 }
-  const invalidInputs = [
+  const validInput: Input = { 'initial-amount': 1000, 'interest': 0.5, 'period': 60 }
+  const invalidInputs: Input[] = [
     { ...validInput, 'initial-amount': 0 },
     { ...validInput, 'initial-amount': -1 },
     { ...validInput, interest: 0 },
@@ -10,7 +13,7 @@ describe('calculate-compound-interest', () => {
     { ...validInput, period: 0 },
     { ...validInput, period: -1 },
   ]
-  const exampleInputs = [
+  const exampleInputs: InputWithExpectedResult[] = [
     { 'initial-amount': 1000, 'interest': 0.5, 'period': 60, 'expectedResult': 1348.85 },
     { 'initial-amount': 1000, 'interest': 0.5, 'period': 12, 'expectedResult': 1061.68 },
   ]

@@ -1,6 +1,6 @@
 import { BigJs, DECIMAL_PLACES_FOR_RESULT } from './constants'
 
-type CalculateTaxAmountArgs = {
+export type CalculateTaxAmountArgs = {
   taxPercentage: number
   initialAmount: number
   gross: number
