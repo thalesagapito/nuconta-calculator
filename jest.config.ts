@@ -23,6 +23,7 @@ export default {
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   collectCoverageFrom: [
     'src/domain/**/*.{ts,vue}',
+    'src/components/**/*.{ts,vue}',
     '!**/domain/nu-conta/constants.ts',
     '!**/*.d.ts',
   ],
@@ -131,7 +132,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['./jest-setup.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
