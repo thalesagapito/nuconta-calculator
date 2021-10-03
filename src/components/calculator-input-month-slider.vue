@@ -36,10 +36,11 @@ const sliderPercentage = computed(() => `${Math.floor(props.months / MAX_MONTHS 
 
     <input
       v-model.number="writableMonths"
-      min="1"
+      data-testid="slider"
       :max="MAX_MONTHS"
-      type="range"
       class="slider"
+      type="range"
+      min="1"
     >
   </div>
 </template>
