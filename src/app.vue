@@ -25,11 +25,25 @@ const { amount, firstDepositAmount, grossAmount, months } = useNuContaReturnsCal
 
 <style lang="postcss" scoped>
 .calculator-wrapper {
-  @apply p-8 flex flex-col md:flex-row;
-  .input {
-    @apply mb-20;
+  @apply p-6 grid grid-cols-1 gap-x-12 gap-y-16
+  mx-auto min-h-screen items-center;
+}
+
+@screen sm {
+  .calculator-wrapper {
+    @apply p-8;
+    max-width: 82rem;
   }
-  .output {
+}
+
+@screen md {
+  .calculator-wrapper {
+    @apply grid-cols-2 py-3.5;
+    max-width: 82rem;
+
+    .input {
+      @apply pl-12 pr-4 pt-28;
+    }
   }
 }
 </style>
