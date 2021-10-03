@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@vueuse/core": "^6.5.3",
@@ -17,6 +18,7 @@
     "@vitejs/plugin-vue": "^1.9.0",
     "autoprefixer": "^10.3.6",
     "eslint": "^7.32.0",
+    "jest": "^27.2.4",
     "postcss": "^8.3.8",
     "postcss-input-range": "^4.0.0",
     "tailwindcss": "^2.2.16",
