@@ -74,4 +74,11 @@ describe('calculator-input-first-deposit-input', () => {
     expect(decrementButton).toBeDisabled()
     await fireEvent.click(decrementButton)
   })
+
+  it('should generate different html for different firstDepositAmount values', async() => {
+    const { html: firstHtml } = render(Component, { ...mountingOptions, props: { firstDepositAmount: 1000 } })
+    const { html: secondHtml } = render(Component, { ...mountingOptions, props: { firstDepositAmount: 1200 } })
+
+    expect(firstHtml).not.toEqual(secondHtml)
+  })
 })

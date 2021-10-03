@@ -24,10 +24,10 @@ describe('calculator-input-month-slider', () => {
     expect(updateEventValue).toEqual(newMonths)
   })
 
-  it('should update markup when months props changes', async() => {
-    const { html: htmlWith1Month } = render(Component, { ...mountingOptions, props: { months: 1 } })
-    const { html: htmlWith12Months } = render(Component, { ...mountingOptions, props: { months: 12 } })
+  it('should generate different html for different months values', async() => {
+    const { html: firstHtml } = render(Component, { ...mountingOptions, props: { months: 1 } })
+    const { html: secondHtml } = render(Component, { ...mountingOptions, props: { months: 12 } })
 
-    expect(htmlWith1Month).not.toEqual(htmlWith12Months)
+    expect(firstHtml).not.toEqual(secondHtml)
   })
 })
