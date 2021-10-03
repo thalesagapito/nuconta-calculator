@@ -26,7 +26,7 @@ const formattedGrossAmount = computed(() => formatCurrency({
 </script>
 
 <template>
-  <div class="output-wrapper">
+  <div class="calculator-output-wrapper">
     <img
       src="../assets/relaxing.png"
       class="relaxing-illustration"
@@ -52,8 +52,8 @@ const formattedGrossAmount = computed(() => formatCurrency({
 </template>
 
 <style lang="postcss" scoped>
-.output-wrapper {
-  @apply bg-white shadow px-8 pb-8 mt-14 flex flex-col justify-start;
+.calculator-output-wrapper {
+  @apply bg-white shadow pl-8 pr-4 pb-8 mt-14 flex flex-col justify-start;
 
   .relaxing-illustration {
     @apply w-auto mb-9 self-center;
@@ -71,7 +71,7 @@ const formattedGrossAmount = computed(() => formatCurrency({
   }
 
   .disclaimer {
-    @apply text-gray-300 text-sm leading-normal my-8;
+    @apply text-gray-300 text-sm leading-normal my-8 pr-4;
   }
 }
 </style>
