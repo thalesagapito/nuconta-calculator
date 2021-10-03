@@ -10,6 +10,10 @@ describe('calculate-compound-interest', () => {
     { ...validInput, period: 0 },
     { ...validInput, period: -1 },
   ]
+  const exampleInputs = [
+    { 'initial-amount': 1000, 'interest': 0.5, 'period': 60, 'expectedResult': 1348.85 },
+    { 'initial-amount': 1000, 'interest': 0.5, 'period': 12, 'expectedResult': 1061.68 },
+  ]
 
   it('should increase result when initial amount is increased and other inputs remain the same', () => {
     const resultWithBaseInitialAmount = calculateCompoundInterest({ ...validInput, 'initial-amount': 1000 })
@@ -37,15 +41,8 @@ describe('calculate-compound-interest', () => {
     expect(result).toEqual(0)
   })
 
-  it('should calculate correctly, compared to examples', () => {
-    const example1Input = { 'initial-amount': 1000, 'interest': 0.5, 'period': 60 }
-    const example1ExpectedResult = 1348.85
-    const example1ActualResult = calculateCompoundInterest(example1Input)
-    expect(example1ActualResult).toEqual(example1ExpectedResult)
-
-    const example2Input = { 'initial-amount': 1000, 'interest': 0.5, 'period': 12 }
-    const example2ExpectedResult = 1061.68
-    const example2ActualResult = calculateCompoundInterest(example2Input)
-    expect(example2ActualResult).toEqual(example2ExpectedResult)
+  test.each(exampleInputs)('should calculate correctly, compared to examples', ({ expectedResult, ...input }) => {
+    const actualResult = calculateCompoundInterest(input)
+    expect(actualResult).toEqual(expectedResult)
   })
 })
