@@ -4,13 +4,13 @@ import Component from './calculator-input-first-deposit-input.vue'
 
 describe('calculator-input-first-deposit-input', () => {
   const firstDepositAmount = 1000
-  const mountingOptions = {
+  const getOptionsWithProps = (props: Record<string, any> = {}) => ({
     global: { plugins: [i18n] },
-    props: { firstDepositAmount },
-  }
+    props: { firstDepositAmount, ...props },
+  })
 
   it('should emit update:firstDepositAmount on decrement button click', async() => {
-    const { getByTestId, emitted } = render(Component, mountingOptions)
+    const { getByTestId, emitted } = render(Component, getOptionsWithProps())
 
     const decrementButton = getByTestId('decrement')
 
@@ -24,7 +24,7 @@ describe('calculator-input-first-deposit-input', () => {
   })
 
   it('should emit update:firstDepositAmount on increment button click', async() => {
-    const { getByTestId, emitted } = render(Component, mountingOptions)
+    const { getByTestId, emitted } = render(Component, getOptionsWithProps())
 
     const incrementButton = getByTestId('increment')
 
@@ -38,7 +38,7 @@ describe('calculator-input-first-deposit-input', () => {
   })
 
   it('should emit update:firstDepositAmount when typing on input', async() => {
-    const { getByTestId, emitted } = render(Component, mountingOptions)
+    const { getByTestId, emitted } = render(Component, getOptionsWithProps())
 
     const input = getByTestId('input')
 
@@ -53,7 +53,7 @@ describe('calculator-input-first-deposit-input', () => {
   })
 
   it('should emit update:firstDepositAmount as 0 when clearing input', async() => {
-    const { getByTestId, emitted } = render(Component, mountingOptions)
+    const { getByTestId, emitted } = render(Component, getOptionsWithProps())
 
     const input = getByTestId('input')
 
@@ -67,7 +67,7 @@ describe('calculator-input-first-deposit-input', () => {
   })
 
   it('should disable decrement button when firstDepositAmount is 0', async() => {
-    const { getByTestId } = render(Component, { ...mountingOptions, props: { firstDepositAmount: 0 } })
+    const { getByTestId } = render(Component, getOptionsWithProps({ firstDepositAmount: 0 }))
 
     const decrementButton = getByTestId('decrement')
 
@@ -76,8 +76,8 @@ describe('calculator-input-first-deposit-input', () => {
   })
 
   it('should generate different html for different firstDepositAmount values', async() => {
-    const { html: firstHtml } = render(Component, { ...mountingOptions, props: { firstDepositAmount: 1000 } })
-    const { html: secondHtml } = render(Component, { ...mountingOptions, props: { firstDepositAmount: 1200 } })
+    const { html: firstHtml } = render(Component, getOptionsWithProps({ firstDepositAmount: 1000 }))
+    const { html: secondHtml } = render(Component, getOptionsWithProps({ firstDepositAmount: 1200 }))
 
     expect(firstHtml).not.toEqual(secondHtml)
   })
