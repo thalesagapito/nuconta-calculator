@@ -17,7 +17,7 @@ describe('validate-input', () => {
     const { hasViolations, violations } = validateInput(validInput)
 
     expect(hasViolations).toBeFalsy()
-    expect(violations.length).toBe(0)
+    expect(violations).toHaveLength(0)
   })
 
   test.each(invalidInputs)('should return a non empty violations array when any of the inputs is invalid', (input) => {
