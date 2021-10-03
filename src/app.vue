@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import CalculatorInput from './components/calculator-input.vue'
 import CalculatorOutput from './components/calculator-output.vue'
+import { useNuContaReturnsCalculator } from './composables/nu-conta-returns-calculator'
 
-const firstDepositAmount = ref(1000)
-const months = ref(1)
+const { amount, firstDepositAmount, grossAmount, months } = useNuContaReturnsCalculator()
 </script>
 
 <template>
@@ -16,7 +15,9 @@ const months = ref(1)
     />
 
     <calculator-output
+      :gross-amount="grossAmount"
       :months="months"
+      :amount="amount"
       class="output"
     />
   </div>
@@ -24,7 +25,7 @@ const months = ref(1)
 
 <style lang="postcss" scoped>
 .calculator-wrapper {
-  @apply p-8 flex flex-col sm:flex-row;
+  @apply p-8 flex flex-col md:flex-row;
   .input {
     @apply mb-20;
   }
