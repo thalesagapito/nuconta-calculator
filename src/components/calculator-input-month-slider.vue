@@ -85,4 +85,10 @@ const sliderPercentage = computed(() => `${Math.floor(props.months / MAX_MONTHS 
     }
   }
 }
+
+@media (pointer: coarse) {
+  .month-slider-wrapper .slider:active::range-thumb {
+    @apply w-8 h-8;
+  }
+}
 </style>
