@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { computed, ref } from 'vue'
 import { useCurrencyFormatter } from '../composables/formatters'
+import { BigJs, DECIMAL_PLACES_FOR_RESULT } from '../domain/nu-conta/constants'
 
 const INCREMENT_OR_DECREMENT_VALUE = 100
 
@@ -36,8 +37,9 @@ function incrementFirstDepositAmount() {
 }
 
 function getAmountFromCurrencyString(currencyString: string) {
-  const stringAmountWithDigitsOnly = currencyString.replace(/\D/g, '') || '0'
-  return Number.parseInt(stringAmountWithDigitsOnly) / 100
+  const stringAmountWithDigitsOnly = currencyString.replace(/\D/g, '')
+  const amount = Number.parseInt(stringAmountWithDigitsOnly || '0')
+  return BigJs(amount).div(100).round(DECIMAL_PLACES_FOR_RESULT).toNumber()
 }
 
 function updateInputWithFormattedValue() {
@@ -66,12 +68,14 @@ const writableFirstDepositAmount = computed({
         ref="firstDepositAmountInput"
         v-model="writableFirstDepositAmount"
         class="first-deposit-amount"
+        data-testid="input"
         inputmode="numeric"
         type="text"
       />
 
       <button
         class="button"
+        data-testid="decrement"
         :aria-label="t('decrement')"
         :disabled="isDecrementDisabled"
         @click="decrementFirstDepositAmount"
@@ -81,6 +85,7 @@ const writableFirstDepositAmount = computed({
 
       <button
         class="button"
+        data-testid="increment"
         :aria-label="t('increment')"
         @click="incrementFirstDepositAmount"
       >
