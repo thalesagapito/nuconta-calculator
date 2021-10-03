@@ -1,4 +1,3 @@
-
 import { Violation } from './types'
 import { validateNuContaReturnsCalculatorInput as validateInput } from './validate-input'
 
