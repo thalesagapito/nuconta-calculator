@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useCurrencyFormatter } from '../composables/formatters'
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     grossAmount: number
     amount: number
@@ -15,6 +17,12 @@ withDefaults(
 )
 
 const { t } = useI18n()
+const { formatCurrency } = useCurrencyFormatter()
+const formattedAmount = computed(() => formatCurrency({ amount: props.amount }))
+const formattedGrossAmount = computed(() => formatCurrency({
+  amount: props.grossAmount,
+  useGrouping: false,
+}))
 </script>
 
 <template>
@@ -30,11 +38,11 @@ const { t } = useI18n()
     </div>
 
     <div class="amount">
-      {{ amount }}
+      {{ formattedAmount }}
     </div>
 
     <div class="gross-amount">
-      {{ t('grossAmount', { formattedAmount: grossAmount }) }}
+      {{ t('grossAmount', { amount: formattedGrossAmount }) }}
     </div>
 
     <p class="disclaimer">
