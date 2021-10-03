@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useVModel } from '@vueuse/core'
-import { computed } from 'vue-demi'
 import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
 
 const MAX_MONTHS = 60
 
