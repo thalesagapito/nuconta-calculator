@@ -66,6 +66,7 @@ const writableFirstDepositAmount = computed({
         ref="firstDepositAmountInput"
         v-model="writableFirstDepositAmount"
         class="first-deposit-amount"
+        inputmode="numeric"
         type="text"
       />
 
@@ -102,11 +103,12 @@ const writableFirstDepositAmount = computed({
     @apply flex justify-between items-center pt-2;
 
     .first-deposit-amount {
-      @apply text-lg mr-auto bg-gray-100 py-2 rounded;
+      @apply text-lg mr-auto bg-gray-100 py-2 rounded w-full min-w-0;
     }
 
     .button {
-      @apply w-14 h-14 ml-4 flex justify-center items-center relative border border-brand-purple rounded-full transition;
+      @apply w-14 h-14 ml-4 flex justify-center items-center relative
+      flex-shrink-0 border border-brand-purple rounded-full transition;
 
       .line {
         @apply w-5 h-px absolute bg-brand-purple transition;
