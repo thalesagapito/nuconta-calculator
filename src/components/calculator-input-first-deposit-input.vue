@@ -108,7 +108,7 @@ const writableFirstDepositAmount = computed({
     @apply flex justify-between items-center pt-2;
 
     .first-deposit-amount {
-      @apply text-lg mr-auto bg-gray-100 py-2 rounded w-full min-w-0;
+      @apply text-lg mr-auto bg-gray-100 py-2 rounded w-full min-w-0 text-black;
     }
 
     .button {
