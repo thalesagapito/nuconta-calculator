@@ -28,12 +28,12 @@ const {
 <template>
   <div class="calculator-input-wrapper">
     <first-deposit-input v-model:firstDepositAmount="writableFirstDepositAmount" />
-    <month-slider v-model:months="writableMonths" class="mt-8" />
+    <month-slider v-model:months="writableMonths" />
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .calculator-input-wrapper {
-  @apply flex flex-col flex-shrink-0;
+  @apply flex flex-col flex-shrink-0 space-y-8;
 }
 </style>
