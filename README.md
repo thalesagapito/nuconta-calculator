@@ -7,6 +7,12 @@ yarn
 yarn dev
 ```
 
+Additionally, run the automated tests using:
+
+```bash
+yarn test
+```
+
 # Recommendations
 
 -   Install the workspace recommended extensions
