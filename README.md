@@ -7,7 +7,14 @@ yarn
 yarn dev
 ```
 
-You can also use the `--host` flag when running `yarn dev` to test the project on a physical mobile device more easily.
+If you want to build and locally preview the production build you can use:
+
+```bash
+yarn build
+yarn serve
+```
+
+You can also use the `--host` flag when running `yarn dev` or `yarn serve` to preview the project on a physical mobile device more easily.
 
 Additionally, run the automated tests using:
 
