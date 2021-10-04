@@ -68,6 +68,7 @@ const writableFirstDepositAmount = computed({
         ref="firstDepositAmountInput"
         v-model="writableFirstDepositAmount"
         class="first-deposit-amount"
+        :aria-label="t('insertFirstDepositAmount')"
         data-testid="input"
         inputmode="numeric"
         type="text"
