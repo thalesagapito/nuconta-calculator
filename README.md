@@ -7,6 +7,8 @@ yarn
 yarn dev
 ```
 
+You can also use the `--host` flag when running `yarn dev` to test the project on a physical mobile device more easily.
+
 Additionally, run the automated tests using:
 
 ```bash
