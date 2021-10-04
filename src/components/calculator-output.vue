@@ -63,11 +63,11 @@ const formattedGrossAmount = computed(() => formatCurrency({
 
   .after-n-months,
   .gross-amount {
-    @apply text-gray-300 text-sm;
+    @apply text-gray-300 text-sm break-all;
   }
 
   .amount {
-    @apply text-5xl text-brand-purple mt-2.5 mb-4;
+    @apply text-5xl text-brand-purple break-all mt-2.5 mb-4;
   }
 
   .disclaimer {
