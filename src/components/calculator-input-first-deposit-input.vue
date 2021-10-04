@@ -114,6 +114,7 @@ const writableFirstDepositAmount = computed({
     .button {
       @apply w-14 h-14 ml-4 flex justify-center items-center relative
       flex-shrink-0 border border-brand-purple rounded-full transition;
+      touch-action: manipulation;
 
       .line {
         @apply w-5 h-px absolute bg-brand-purple transition;
