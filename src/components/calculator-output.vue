@@ -30,7 +30,7 @@ const formattedGrossAmount = computed(() => formatCurrency({
     <img
       src="../assets/relaxing.png"
       class="relaxing-illustration"
-      alt="Illustration of person laying back and relaxing."
+      :alt="t('relaxingIllustrationAlt')"
     >
 
     <div class="after-n-months">
